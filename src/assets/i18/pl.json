@@ -1,0 +1,9 @@
+{
+  "date": {
+    "monthYear": "{{ date, LLLL yyyy }}",
+    "weekDay": "{{ date, EEEE }}"
+  },
+  "language": {
+    "pl": "Polish"
+  }
+}

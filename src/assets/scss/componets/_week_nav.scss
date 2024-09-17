@@ -1,0 +1,269 @@
+$colorGreyTxt: #bdbdbd !default;
+$colorGreyDot: #dbdbdb !default;
+$colorGreenLightDot: #b2c200 !default;
+$colorGreyDarkLabel: #828282 !default;
+
+.progress {
+  &-wrap {
+    display: flex;
+    flex-direction: column;
+    max-width: 240px;
+    width: 100%;
+
+    @include mq(maxsm) {
+      order: 1;
+    }
+
+    @include mq(maxxsm) {
+      max-width: 220px;
+      padding-top: 30px;
+    }
+  }
+
+  &-txt {
+    margin-bottom: 12px;
+    color: $colorGreyTxt;
+    text-transform: uppercase;
+    font-size: 9px;
+  }
+
+  &-indicator {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0;
+    margin-left: -0.25rem;
+    max-width: 100%;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+  }
+
+  &-step {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: auto;
+    flex-direction: column;
+    justify-content: center;
+
+    & .dot {
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      width: 10px;
+      height: 10px;
+      border: 0;
+      border-radius: 50%;
+      background: $colorGreyDot;
+      transition:
+        transform 0.5s ease 0.5s,
+        background 0.5s ease,
+        border-color 0.5s ease;
+
+      &::after {
+        background: $colorGreyDot;
+        animation: progressWidthReverse 0.5s ease forwards;
+      }
+    }
+
+    &:not(:last-child) {
+      &::before,
+      &::after {
+        position: absolute;
+        top: 4px;
+        left: 50%;
+        height: 2px;
+        content: "";
+      }
+
+      &::before {
+        width: 100%;
+        background: $colorGreyDot;
+      }
+    }
+
+    &.active {
+      & .dot {
+        border: 2px solid $colorGreyDot;
+        background: $colorWhite;
+      }
+
+      & .label {
+        color: $colorGreenLightDot;
+      }
+    }
+
+    &.complete {
+      & .dot {
+        background: $colorGreenLightDot;
+      }
+
+      & .label {
+        color: $colorBlack;
+      }
+
+      &::after {
+        background: $colorGreenLightDot;
+        animation: progressWidth 0.5s ease forwards;
+      }
+    }
+
+    & .label {
+      margin: 4px 0 0;
+      color: $colorGreyDot;
+      font-size: 9px;
+      line-height: 9px;
+    }
+  }
+}
+
+.week {
+  &-wrap {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+
+    @include mq(maxsm) {
+      order: 3;
+      margin-top: 2rem;
+    }
+  }
+
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+
+  & p {
+    margin-bottom: 0;
+    color: $colorOrange;
+    font-size: 48px;
+    line-height: 48px;
+    padding: 0 3rem;
+
+    @include mq(maxmd) {
+      padding: 0 2.5rem;
+    }
+
+    @include mq(maxsmd) {
+      padding: 0 2.2rem;
+      font-size: 42px;
+      line-height: 42px;
+    }
+
+    @include mq(maxsm) {
+      padding: 0 2rem;
+    }
+  }
+}
+
+.btn_nav {
+  $btnColor: #c0c0c0 !default;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+  border: 1px solid $btnColor;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  padding: 0.8rem 0.5rem;
+
+  & svg {
+    max-width: 10px;
+    max-height: 17px;
+  }
+}
+
+.protein {
+  display: flex;
+  flex-direction: column;
+
+  @include mq(maxsm) {
+    order: 2;
+  }
+
+  @include mq(maxxsm) {
+    padding-top: 30px;
+    margin-top: 0;
+  }
+
+  & p {
+    margin-bottom: 10px;
+    color: $colorGreyTxt;
+    text-transform: uppercase;
+    font-size: 9px;
+  }
+
+  &__icons {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  &__figure {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 0;
+    min-width: 40px;
+  }
+
+  &__img {
+    display: block;
+    max-height: 25px;
+    padding: 0 0.5rem 0 0;
+
+    @include mq(maxxsm) {
+      max-height: 27px;
+    }
+  }
+}
+
+@keyframes progressWidth {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes progressWidthReverse {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0%;
+  }
+}
+
+.slidernavweek {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.slider-item {
+  display: flex;
+  max-width: 250px;
+  width: 250px;
+  justify-content: center;
+  align-items: center;
+  color: $colorOrange;
+  font-size: 48px;
+  line-height: 48px;
+
+  @include mq(maxsmd) {
+    font-size: 42px;
+    line-height: 42px;
+  }
+}

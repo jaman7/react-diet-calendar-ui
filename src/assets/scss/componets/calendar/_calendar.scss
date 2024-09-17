@@ -1,0 +1,326 @@
+.display-days {
+  display: flex;
+  background-color: $colorWhite;
+  overflow: hidden;
+}
+
+.time {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  background-color: $colorGrayLight3;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    flex: 1 1 0;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @extend %min_height-box;
+
+    border-bottom: 2px solid $colorGreyLightBorder;
+    color: $colorGreyDark2;
+
+    & p {
+      margin-bottom: 0;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    & span {
+      font-weight: 400;
+    }
+
+    &:first-child {
+      flex-grow: 0;
+      min-height: 56px;
+    }
+
+    &:nth-child(7) {
+      flex-grow: 0;
+      min-height: 36px;
+    }
+
+    &:last-child {
+      flex-basis: 0;
+      flex-shrink: 0;
+      min-height: 0;
+      border-bottom: 0;
+    }
+
+    & a {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      justify-content: center;
+      color: $colorGreyDark2;
+      text-decoration: none;
+      white-space: nowrap;
+
+      & span {
+        margin-right: 0.2rem;
+        font-weight: 600;
+        font-size: 11px;
+      }
+
+      & svg {
+        max-width: 7px;
+        max-height: 9px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.data {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-basis: inherit;
+  flex-flow: column wrap;
+  flex-grow: 1;
+  flex-shrink: 1;
+  border-right: 2px solid $colorGreyLightBorder;
+
+  &-wrap {
+    display: flex;
+    width: 100%;
+    flex: 1 1 0;
+  }
+
+  &:last-child {
+    border-right: 0;
+  }
+
+  &.active {
+    & .data__item--day {
+      color: $colorOrange;
+    }
+
+    & .data__item--txt {
+      color: $colorBlack;
+    }
+
+    & .img-item {
+      filter: grayscale(0);
+    }
+
+    &::before {
+      position: absolute;
+      inset: 0 -2px;
+      z-index: 2;
+      border: 2px solid $colorOrange;
+      content: "";
+      pointer-events: none;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    border-bottom: 2px solid $colorGreyLightBorder;
+    padding: 15px;
+
+    &--grow {
+      flex: auto;
+      justify-content: center;
+      border-right: 0;
+      padding: 0;
+    }
+
+    &--day {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      color: $colorGreen;
+      text-transform: uppercase;
+
+      @include fluid-type(18px, 24px);
+      @include fluid-type(18px, 24px, "line-height");
+    }
+
+    &--diet {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      flex: 1 1 0;
+      flex-wrap: wrap;
+      min-height: 112px;
+      cursor: pointer;
+      overflow: hidden;
+      transition:
+        filter 300ms ease-in-out,
+        opacity 300ms ease-in-out;
+
+      &:hover,
+      &:focus {
+        & p {
+          opacity: 0.8;
+        }
+
+        & img {
+          filter: grayscale(10%);
+        }
+      }
+
+      & img {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        max-height: 70px;
+        filter: grayscale(100%);
+      }
+
+      & .checked {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        display: block;
+        max-height: 16px;
+      }
+    }
+
+    &--labelwrapper {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-around;
+      max-width: 2em;
+      white-space: nowrap;
+    }
+
+    &--free {
+      display: flex;
+      justify-content: center;
+      margin-top: 3.5em;
+      color: $colorGrayLight2;
+      white-space: nowrap;
+      transform: rotate(-90deg);
+      transform-origin: center center;
+
+      @include fluid-type(26px, 35px);
+    }
+
+    & .img-smile {
+      max-height: 34px;
+
+      @include mq(maxsm) {
+        max-height: 26px;
+      }
+    }
+
+    &--carb {
+      align-items: center;
+      flex-grow: 1;
+      justify-content: center;
+      min-height: 36px;
+      background-color: $colorGrayLight3;
+      text-align: center;
+      padding: 0;
+
+      & p {
+        text-transform: uppercase;
+      }
+    }
+
+    &--txt {
+      margin-bottom: 0;
+      padding: 0;
+      font-size: 13px;
+      line-height: initial;
+      white-space: normal;
+    }
+
+    &--dumbbell {
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      justify-content: center;
+      padding: 4px 15px;
+      background-color: $colorGrayLight3;
+
+      &btn {
+        position: relative;
+        display: inline-block;
+        border: 0;
+        background-color: transparent;
+        outline: 0;
+        transition: opacity 300ms ease-in-out;
+
+        &:hover {
+          outline: 0;
+          opacity: 0.7;
+
+          & .icon-dumbbell {
+            filter: grayscale(15%);
+          }
+        }
+
+        &:focus {
+          outline: 0;
+        }
+
+        & .icon-dumbbell {
+          filter: grayscale(100%);
+
+          &__ok {
+            filter: grayscale(0%);
+          }
+        }
+
+        & .icon-check {
+          display: none;
+        }
+
+        &.checked {
+          & .icon-check {
+            position: absolute;
+            top: 50%;
+            right: -1rem;
+            display: inline-block;
+            transform: translateY(-25%);
+          }
+        }
+      }
+    }
+
+    &--print {
+      display: flex;
+      flex-grow: initial;
+      justify-content: center;
+      min-height: 72px;
+      background-color: $colorGrayLight3;
+
+      & .btn_print {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1px;
+      }
+
+      & span {
+        margin-left: 0.5rem;
+        color: $colorGrayLight2;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.current-month {
+  display: block;
+  color: $colorGreen;
+  padding: 5px;
+  text-align: center;
+
+  @include fluid-type(18px, 24px);
+  @include fluid-type(18px, 24px, "line-height");
+}

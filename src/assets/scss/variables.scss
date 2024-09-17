@@ -1,0 +1,32 @@
+// ***********************************
+// VARIABLES
+// ***********************************
+$colorBlack: #000 !default;
+$colorWhite: #fff !default;
+$colorGray: #f9f9f9 !default;
+$colorGrayLight: #e1e1e1 !default;
+$colorGrayLight2: #c2c2c2 !default;
+$colorGrayLight3: #eee !default;
+$colorGreyLightBorder: #e9e9e9 !default;
+$colorGrayDark: #7c7c7c !default;
+$colorGreyDark2: #828282 !default;
+$colorGreyDark3: #a1a1a1 !default;
+$colorOrange: #ff801a !default;
+$colorOrangeLight: #ffc79a !default;
+$colorGreen: #adbb0c !default;
+$colorBlue: #1568a8;
+$colorLightBlue: #3166a3;
+$fontRoboto: "Roboto", sans-serif;
+$fontbase: 16px !default;
+
+%min_height-box {
+  min-height: 112px;
+}
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1200px,
+) !default;
+$component-active-bg: $colorGray !default;

@@ -1,0 +1,26 @@
+html {
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  color: $colorBlack;
+  font-weight: 400;
+  font-family: $fontRoboto;
+  -moz-osx-font-smoothing: grayscale !important;
+  -webkit-font-smoothing: subpixel-antialiased !important;
+  font-size: $fontbase;
+  height: 100vh;
+  overflow: hidden;
+  background-color: $colorGray;
+}
+
+section,
+nav,
+footer {
+  & .container {
+    @include mq(maxmd) {
+      min-width: 100%;
+    }
+  }
+}
